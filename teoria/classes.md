@@ -45,3 +45,28 @@ Acessar métodos e atributos:
     obj.attribute_name
 
     obj.method_name()
+
+### Convenções de nomenclatura
+Para nomear uma classe utilizamos a convenção **PascalCase**, onde cada palavra é capitalizada.  
+Em python nós não temos distinção definida pela linguagem entre atributos privados, protegidos e públicos. Porém, há uma convenção de nomeação que consiste em adicionar um underscore no início do nome para indicar que um método e/ou atributo é não-público:  
+- **Público:** radius, calculate_area()
+- **Não-público:** _raidus, _calculate_area()  
+
+Membros públicos são parte oficial da interface ou API de sua classe, enquando os não-públicos não são planejados para serem parte da API.  
+Outra convenção de nomenclatura é a utilização de dois underscores no início do nome, e essa convenção aciona o mecanismo de name mangling, que é a transformação automática do nome do atributo e/ou método, por exemplo:  
+
+    class SampleClass:
+        def __init__(self, value):
+            self.__value = value
+        def __method(self):
+            print(self.__value)  
+
+- **Criação:** Classe: SampleClass; Atributo:.__value; Método:.__method
+- **Acesso:** Atributo: .\_SampleClass\_\_value; .\_SampleClass\_\_method()  
+
+Podemos utilizar a função **vars()** para olharmos o atributo .\_\_dict\_\_ de uma classe ou objeto.  
+
+### Guardando dados nas classes e objetos  
+As classes possuem dois tipos de atributos:
+1. Atributos de classe: é uma variável que você define diretamente no corpo da classe. Os dados do atributo de classe é comum à classe e todas as suas instâncias. 
+1. Atributos de instância:
