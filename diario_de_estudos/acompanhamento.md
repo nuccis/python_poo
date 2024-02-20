@@ -1,1 +1,2 @@
 - 16/02/24 - Criação do repositório e pastas;
+- 19/02/24 - Estudo da teoria de criação de classes;
