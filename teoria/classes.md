@@ -68,5 +68,8 @@ Podemos utilizar a função **vars()** para olharmos o atributo .\_\_dict\_\_ de
 
 ### Guardando dados nas classes e objetos  
 As classes possuem dois tipos de atributos:
-1. Atributos de classe: é uma variável que você define diretamente no corpo da classe. Os dados do atributo de classe é comum à classe e todas as suas instâncias. 
-1. Atributos de instância:
+1. Atributos de classe: é uma variável que você define diretamente no corpo da classe. Os dados do atributo de classe é comum à classe e todas as suas instâncias. Logo, se você alterar um atributo de classe, essa mudança afeta todos os objetos derivados.
+1. Atributos de instância: é uma variável que você define dentro de um método. Os dados dela estão disponíveis apenas na instância e define o seu status. Mesmo que seja possível definir atributos de instância dentro de qualquer método de instância, é uma boa prática definir todo eles dentro do método .\_\_init__  
+
+### O atributo .\_\_dict__
+
