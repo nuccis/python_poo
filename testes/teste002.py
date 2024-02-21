@@ -12,7 +12,7 @@ class Carro:
 #Programa principal
 vanzinha = Carro('médio')
 #print(vanzinha.__tamanho) -> retorna uma erro
-vanzinha._Carro__mudarTamanho('Grande')
+
 print(vanzinha.olharTamanho())
 print('\n dict de vanzinha:')
 print(vars(vanzinha))

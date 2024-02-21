@@ -73,3 +73,8 @@ As classes possuem dois tipos de atributos:
 
 ### O atributo .\_\_dict__
 
+Em Python as classes e as instâncias possuem um atributo chamado .\_\_dict__, que guarda os membros graváveis (atributos e métodos).  
+Nas classes, o .\_\_dict__ irá guardar os atributos de classe e os métodos, e nas instâncias, o .\_\_dict__ irá guardar os atributos de instância.
+
+Podemos adicionar atributos e métodos dinamicamente, como mostra a imagem abaixo, porém deve-se ter cuidado com essa funcionalidade, pois ela pode tornar o código confuso e de difícil leitura.
+![Dynamic Input](/teoria/image/dynamic_input.png)
