@@ -78,3 +78,39 @@ Nas classes, o .\_\_dict__ irá guardar os atributos de classe e os métodos, e 
 
 Podemos adicionar atributos e métodos dinamicamente, como mostra a imagem abaixo, porém deve-se ter cuidado com essa funcionalidade, pois ela pode tornar o código confuso e de difícil leitura.
 ![Dynamic Input](/teoria/image/dynamic_input.png)
+
+### Atributos baseados em propriedade e descritor
+Com os atributos baseados em propriedade e descritores é possível criar atributos que tenham comportamento de função e de atributo ao mesmo tempo.  
+Para dar esse comportamento a um atributo, podemos utilizar a propriedade através do decorador @property (que vai funcionar como um método getter) e @nome_do_atributo.setter (que vai funcionar como um método setter).  
+
+Como por exemplo:
+
+    import math
+    class Circle:
+        def __init__(self, radius):
+            self.radius = radius
+
+        @property
+        def radius(self):
+            return self._radius
+
+        @radius.setter
+        def radius(self, value):
+            if not isinstance(value, int | float) or value <= 0:
+                raise ValueError("positive number expected")
+            self._radius = value
+
+        def calculate_area(self):
+            return round(math.pi * self._radius**2, 2)
+
+Explicação de por que utilizar _radius:  
+
+>Ao definir @property para radius sem underscore e dentro deste método tentar acessar self.radius, você está chamando o método radius novamente, e assim criando um ciclo infinito de chamadas recursivas.
+
+>É por isso que é uma boa prática usar o underscore antes do nome do atributo interno (_radius), indicando que ele é um atributo interno e não deve ser acessado diretamente, evitando assim a recursão infinita e possíveis erros.  
+
+Logo, se olharmos o atributo .__dict__ iremos ver que o atributo criado se chama _radius. É uma convensão utilizar um underscore antes do nome, poderiamos utilizar qualquer outra nomenclatura que também daria certo.
+
+
+
+

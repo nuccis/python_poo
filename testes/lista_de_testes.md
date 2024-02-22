@@ -4,4 +4,5 @@
 1. teste004: Atributo de instância;
 1. teste005: Atributo .\_\_dict__;
 1. teste006: Adicionando itens dinamicamente;
+1. teste007: Propriedades
 
