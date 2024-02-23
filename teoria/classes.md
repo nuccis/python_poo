@@ -81,6 +81,8 @@ Podemos adicionar atributos e métodos dinamicamente, como mostra a imagem abaix
 
 ### Atributos baseados em propriedade e descritor
 Com os atributos baseados em propriedade e descritores é possível criar atributos que tenham comportamento de função e de atributo ao mesmo tempo.  
+#### PROPRIEDADE
+****
 Para dar esse comportamento a um atributo, podemos utilizar a propriedade através do decorador @property (que vai funcionar como um método getter) e @nome_do_atributo.setter (que vai funcionar como um método setter).  
 
 Como por exemplo:
@@ -109,8 +111,30 @@ Explicação de por que utilizar _radius:
 
 >É por isso que é uma boa prática usar o underscore antes do nome do atributo interno (_radius), indicando que ele é um atributo interno e não deve ser acessado diretamente, evitando assim a recursão infinita e possíveis erros.  
 
-Logo, se olharmos o atributo .__dict__ iremos ver que o atributo criado se chama _radius. É uma convensão utilizar um underscore antes do nome, poderiamos utilizar qualquer outra nomenclatura que também daria certo.
+Logo, se olharmos o atributo .__dict__ iremos ver que o atributo criado se chama _radius. É uma convensão utilizar um underscore antes do nome para declarar a varivável, poderiamos utilizar qualquer outra nomenclatura que também daria certo.
 
+#### DESCRITOR
+****
+Os descritores são utilizados para criar classes que realizam validações de atributos de classe, e podem ser utilizados várias vezes.  
+Descritores são objeto em Python que implementam um método do **descriptor protocol**, que nós dá a habilidade que criar objetos que possuem um comportamento especial quando eles são acessados como atributos de outros objetos.  
+Abaixo temos a definição do protocolo:
 
+    __get__(self, obj, type=None) -> object
+    __set__(self, obj, value) -> None
+    __delete__(self, obj) -> None
+    __set_name__(self, owner, name)
 
+- **Parâmetros**:
+    - **self** é a instância do descritor que você está escrevendo;
+    - **obj** é a instância do objeto ao qual seu descritor está anexado;
+    - **type** é o tipo do objeto ao qual o descritor está anexado;
+    - **name** é o nome da variável na qual o objeto será instanciado.
 
+Os descritores podem ser divididos em dois grupos:
+- **non-data descriptor**: implementam apenas o método .\_\_get__
+- **data descriptor**: implementam um ou os dois métodos de modificação, o .\_\_set__ e o \_\_delete__
+
+Uma coisa importante a se ter em mente é que os descritores são instanciados apenas uma vez por classe, pois eles são criados  como objetos pertencentes à classe. E a relação é do tipo **composição** entre as classe descritora e classe que vai receber uma instância do descritor.  
+Isso significa que cada instância de um classe contendo um descritor compartilha entre si a mesma instância do descritor.  
+Outra coisa a se lembrar é que não armazenamos valores dentro do descritor, e sim dentro do objeto ao qual o descritor está anexado.  
+**OLHAR O TESTE 008 PARA EXEMPLO DE CÓDIGO**
