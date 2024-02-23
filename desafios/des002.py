@@ -1,0 +1,1 @@
+#Implemente um descritor chamado ProtectedAttribute que permita que um atributo seja acessado apenas para leitura, mas não para escrita. Teste o descritor em uma classe chamada Person com atributos name (que pode ser lido e escrito) e age (que só pode ser lido).
