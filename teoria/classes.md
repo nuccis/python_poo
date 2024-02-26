@@ -138,3 +138,48 @@ Uma coisa importante a se ter em mente é que os descritores são instanciados a
 Isso significa que cada instância de um classe contendo um descritor compartilha entre si a mesma instância do descritor.  
 Outra coisa a se lembrar é que não armazenamos valores dentro do descritor, e sim dentro do objeto ao qual o descritor está anexado.  
 **OLHAR O TESTE 008 PARA EXEMPLO DE CÓDIGO**
+
+### Classes mais leves com .\_\_slots__
+
+Este atributo previne a criação automática de uma instância com o atributo .\_\_dict__. Sendo assim, após a criação do objeto, não é possível definir mais atributos, pois todos os atributos já foram previamente nomeados no atributo \_\_slots__.
+
+    class Point:
+        __slots__ = ("x", "y")
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+**OBS:** Sempre usar tupla para declarar as variáveis, pois tuplas são imutáveis.
+
+### Provendo comportamentos com métodos
+Em Python, você pode definir três diferentes tipos de métodos:  
+1. Instance method: recebe a instância atual, self, como seu primeiro argumento;
+1. Class method: usam a classe atual, cls, como primeiro argumento;
+1. Static method: não utilizam nem a classe e nem a instância como argumento.
+
+#### Instance methods com self
+***
+O argumento self guarda uma referência para instância atual, nos permitindo acessar aquela instância de dentro dos métodos.  
+
+    class Car:
+        def __init__(self, make, model, year, color):
+            self.make = make
+            self.model = model
+            self.year = year
+            self.color = color
+            self.started = False
+            self.speed = 0
+            self.max_speed = 200
+
+        def start(self):
+            print("Starting the car...")
+            self.started = True
+
+        def stop(self):
+            print("Stopping the car...")
+            self.started = False
+
+Neste caso, os métodos .start() e .stop() são instance methods, pois recebem self como seu primeiro argumento.
+
+#### Métodos especiais e protocolos
+***

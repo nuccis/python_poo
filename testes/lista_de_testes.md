@@ -6,3 +6,5 @@
 1. teste006: Adicionando itens dinamicamente;
 1. teste007: Propriedades
 1. teste008: Descritores
+1. teste009: Atributo .\_\_slots__;
+1. teste010: Instance method
