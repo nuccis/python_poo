@@ -1,2 +1,3 @@
 1. des001: Crie um descritor chamado PositiveNumber que garanta que o valor de um atributo seja sempre um número positivo. Teste o descritor criado em uma classe chamada Product com um atributo price.
 1. des002: Implemente um descritor chamado ProtectedAttribute que permita que um atributo seja acessado apenas para leitura, mas não para escrita. Teste o descritor em uma classe chamada Person com atributos name (que pode ser lido e escrito) e age (que só pode ser lido).
+1. des003: Implemente um descritor chamado ObservedAttribute que imprima uma mensagem toda vez que um atributo for acessado ou modificado. Teste o descritor em uma classe chamada Rectangle com atributos width e height.
