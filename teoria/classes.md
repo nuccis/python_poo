@@ -183,3 +183,28 @@ Neste caso, os métodos .start() e .stop() são instance methods, pois recebem s
 
 #### Métodos especiais e protocolos
 ***
+Os métodos especiais são conhecidos também como dunder methods (double underscore), e eles possuem um importante recurso em comum: Python os chama automaticamente em resposta a operações específicas.  
+Dois métodos úteis são o **.\_\_str__()** e o **.\_\_repr__()** que fornecem represetações de string para os meus objetos.
+
+    class Car:
+        # ...
+
+        def __str__(self):
+            return f"{self.make}, {self.model}, {self.color}: ({self.year})"
+
+        def __repr__(self):
+            return (
+                f"{type(self).__name__}"
+                f'(make="{self.make}", '
+                f'model="{self.model}", '
+                f"year={self.year}, "
+                f'color="{self.color}")'
+            )
+
+O método **.\_\_str__()** fornece o que é conhecido como **representação informal de string** de um objeto. Este método deve retornar uma string que representa o objeto de uma maneira amigável ao usuário.  
+O método **.\_\_repr__()** é similar, mas ele deve retornar uma sting que permita recriar o objeto se possível. Então, este método retorna o que é conhecido como **representação formal de string**.
+
+Os protocolos em python consistem de um ou mais métodos especiais que suportam uma dada funcionalidade ou recurso. Exemplos comuns de protocolos:
+
+![Protocols](/teoria/image/protocols.png)
+

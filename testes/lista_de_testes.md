@@ -8,3 +8,4 @@
 1. teste008: Descritores
 1. teste009: Atributo .\_\_slots__;
 1. teste010: Instance method
+1. teste011: Dunder methods: str e repr
