@@ -202,9 +202,18 @@ Dois métodos úteis são o **.\_\_str__()** e o **.\_\_repr__()** que fornecem 
             )
 
 O método **.\_\_str__()** fornece o que é conhecido como **representação informal de string** de um objeto. Este método deve retornar uma string que representa o objeto de uma maneira amigável ao usuário.  
-O método **.\_\_repr__()** é similar, mas ele deve retornar uma sting que permita recriar o objeto se possível. Então, este método retorna o que é conhecido como **representação formal de string**.
+
+O método **.\_\_repr__()** é similar, mas ele deve retornar uma sting que permita recriar o objeto se possível. Então, este método retorna o que é conhecido como **representação formal de string**. Na string retornada, primeiro vem a classe e depois os atributos entre parenteses.
 
 Os protocolos em python consistem de um ou mais métodos especiais que suportam uma dada funcionalidade ou recurso. Exemplos comuns de protocolos:
 
 ![Protocols](/teoria/image/protocols.png)
 
+#### Métodos de classe com @classmethod
+***
+Os métodos de classe apenas tem acesso ao argumento **_cls_** e não pode modificar o estado da instância, pois isso iria requerer acesso ao argumento **_self_**. No entanto, métodos de classe ainda podem modificar o estado da classe, que se aplica através de todas as suas instâncias.
+
+![Protocols](/teoria/image/class_method.png)
+
+#### Métodos estáticos com @staticmethod
+***
