@@ -11,3 +11,4 @@
 1. teste011: Dunder methods: str e repr
 1. teste012: Métodos de classe
 1. teste013: métodos estáticos
+1. teste014: Uso completo de classes
