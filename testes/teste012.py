@@ -4,7 +4,7 @@ class Pizza:
         self.ingredients = ingredients
     
     def __repr__(self):
-        return f'Pizza ({self.ingredients})'
+        return f'{type(self).__name__} (ingredients = {self.ingredients})'
     
     @classmethod
     def margherita(cls):

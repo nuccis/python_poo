@@ -213,7 +213,11 @@ Os protocolos em python consistem de um ou mais métodos especiais que suportam 
 ***
 Os métodos de classe apenas tem acesso ao argumento **_cls_** e não pode modificar o estado da instância, pois isso iria requerer acesso ao argumento **_self_**. No entanto, métodos de classe ainda podem modificar o estado da classe, que se aplica através de todas as suas instâncias.
 
-![Protocols](/teoria/image/class_method.png)
+![Class methods](/teoria/image/class_method.png)
 
 #### Métodos estáticos com @staticmethod
 ***
+Como esses métodos não recebem nem a classe e nem a instância como um argumento, eles funcionam como funções, com a diferença de que são declarados dentro de uma variável.  
+Geralmente declaramaos um método estático ao invés de uma função quando esse método está especialmente relacionado com a classe.
+
+![Static methods](/teoria/image/static_method.png)

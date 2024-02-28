@@ -1,3 +1,6 @@
-1. des001: Crie um descritor chamado PositiveNumber que garanta que o valor de um atributo seja sempre um número positivo. Teste o descritor criado em uma classe chamada Product com um atributo price.
-1. des002: Implemente um descritor chamado ProtectedAttribute que permita que um atributo seja acessado apenas para leitura, mas não para escrita. Teste o descritor em uma classe chamada Person com atributos name (que pode ser lido e escrito) e age (que só pode ser lido).
-1. des003: Implemente um descritor chamado ObservedAttribute que imprima uma mensagem toda vez que um atributo for acessado ou modificado. Teste o descritor em uma classe chamada Rectangle com atributos width e height.
+1. **des001:** Crie um descritor chamado PositiveNumber que garanta que o valor de um atributo seja sempre um número positivo. Teste o descritor criado em uma classe chamada Product com um atributo price.
+1. **des002:** Implemente um descritor chamado ProtectedAttribute que permita que um atributo seja acessado apenas para leitura, mas não para escrita. Teste o descritor em uma classe chamada Person com atributos name (que pode ser lido e escrito) e age (que só pode ser lido).
+1. **des003:** Implemente um descritor chamado ObservedAttribute que imprima uma mensagem toda vez que um atributo for acessado ou modificado. Teste o descritor em uma classe chamada Rectangle com atributos width e height.
+1. **des004:** Sistema de Gerenciamento de Contatos: Crie um programa que permita ao usuário adicionar, visualizar, atualizar e excluir contatos. Cada contato deve ter um nome, um número de telefone e um endereço de e-mail.
+1. **des005:** Simulação de Banco: Implemente um programa que simule as operações básicas de um banco, como criar conta, depositar, sacar e verificar saldo.
+1. **des006:** Agenda de Eventos: Desenvolva uma aplicação que permita ao usuário adicionar eventos a uma agenda, cada evento deve ter um título, data, hora de início e hora de término.
