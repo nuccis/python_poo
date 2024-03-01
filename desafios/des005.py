@@ -14,18 +14,40 @@ class ContaBancaria:
             self.conta = True
             print('A conta foi aberta com sucesso!')
 
-    def depositar(self):
-        pass
+    def depositar(self, din):
+        if self.conta:
+            self.saldo += din
+        else:
+            print('A conta se encontra fechada')
 
-    def sacar(self):
-        pass
+    def sacar(self, din):
+        if not self.conta:
+            print('A conta se encontra fechada')
+        else:
+            if self.saldo - din < 0:
+                print('Você não possui saldo suficiente')
+                print(f'Saldo atual de R${self.saldo:.2f}'.replace('.',','))
+            else:
+                self.saldo -= din
+                print(f'Saque de R${din} '.replace('.',','),'realizado com sucesso!')
+                print(f'Saldo atual de R${self.saldo:.2f}'.replace('.',','))
 
     def verificarSaldo(self):
-        pass
+        if self.conta:
+            print(f'Saldo: R${self.saldo:.2f}'.replace('.',','))
+        else:
+            print('A conta se encontra fechada')
 
     def fecharConta(self):
-        pass
-    
+        if not self.conta:
+            print('A conta já se encontra fechada')
+        elif self.saldo > 0:
+            print(f'Não é possível fechar a conta.\n'
+                  f'Ainda há um saldo de R${self.saldo:.2f}'.replace('.',','))
+        else:
+            self.conta = False
+            print('A conta foi fechada com sucesso.')
+                        
     def verificarConta(self):
         if self.conta:
             print('A sua conta encontra-se aberta\n'
@@ -44,6 +66,6 @@ def leiaDinheiro(msg):
         
 #Programa principal
 minha_conta = ContaBancaria('Leticia')
-minha_conta.verificarConta()
-minha_conta.criarConta()
-minha_conta.verificarConta()
+
+minha_conta.depositar(2)
+minha_conta.sacar(2)
