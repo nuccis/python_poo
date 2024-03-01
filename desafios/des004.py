@@ -94,12 +94,3 @@ while True:
     elif opc == 5:
         print('Até logo!')
         break
-'''for n in range(0, 2):
-    nome, numero, email = ler_contato()
-    agenda_telefonica.adicionar(Contato(nome,numero,email))
-
-nome = 'a loka'
-numero = '123'
-email = '3456'
-agenda_telefonica.excluir()
-agenda_telefonica.visualizar()'''
