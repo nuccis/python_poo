@@ -1,4 +1,6 @@
 #Sistema de Gerenciamento de Contatos: Crie um programa que permita ao usuário adicionar, visualizar, atualizar e excluir contatos. Cada contato deve ter um nome, um número de telefone e um endereço de e-mail.
+from time import sleep
+
 #Classes
 class Contato:
     def __init__(self, nome:str, numero:str, email:str) -> None:
@@ -30,9 +32,7 @@ class Agenda:
             for i, n in enumerate(self.contatos):
                 print(f'{i+1}º {n.nome}: {n.numero} - {n.email} ')
 
-    def atualizar(self, nome:str, numero:str, email:str) -> None:
-        self.visualizar()
-        ind = int(input('Digite o índice do contato desejado: '))
+    def atualizar(self, ind:int, nome:str, numero:str, email:str) -> None:
         if 0 < ind <= len(self.contatos):
             self.contatos[ind - 1].nome = nome
             self.contatos[ind - 1].numero = numero
@@ -40,8 +40,7 @@ class Agenda:
         else:
             print('Opção inválida')
 
-    def excluir(self) -> None:
-        ind = int(input('Digite o índice do contato que desja excluir: '))
+    def excluir(self, ind) -> None:
         if 0 < ind <= len(self.contatos):
             self.contatos.pop(ind - 1)
         else:
@@ -58,7 +57,44 @@ def ler_contato() -> tuple[str, str, str]:
 
 #Programa principal
 agenda_telefonica = Agenda()
-for n in range(0, 2):
+while True:
+    sleep(1)
+    print('-'*60)
+    print(f'{'MENU':^60}')
+    print('-'*60)
+    print(f'1 - Adicionar contato\n'
+          f'2 - Visualizar contato\n'
+          f'3 - Atualizar contato\n'
+          f'4 - Excluir contato\n'
+          f'5 - Sair do programa\n')
+    while True:
+        try:
+            opc = int(input('Digite a opção desejada: '))
+            if opc not in range(1, 6):
+                raise ValueError
+            break
+        except ValueError:
+            print('\033[0;31mErro! Digite uma opção válida.\033[m')
+
+    
+    if opc == 1:
+        nome, numero, email = ler_contato()
+        agenda_telefonica.adicionar(Contato(nome, numero, email))
+    elif opc == 2:
+        agenda_telefonica.visualizar()
+    elif opc == 3:
+        agenda_telefonica.visualizar()
+        ind = int(input('Digite o índice do contato desejado: '))
+        nome, numero, email = ler_contato()
+        agenda_telefonica.atualizar(ind, nome, numero, email)
+    elif opc == 4:
+        agenda_telefonica.visualizar()
+        ind = int(input('Digite o índice do contato que desja excluir: '))
+        agenda_telefonica.excluir(ind)
+    elif opc == 5:
+        print('Até logo!')
+        break
+'''for n in range(0, 2):
     nome, numero, email = ler_contato()
     agenda_telefonica.adicionar(Contato(nome,numero,email))
 
@@ -66,4 +102,4 @@ nome = 'a loka'
 numero = '123'
 email = '3456'
 agenda_telefonica.excluir()
-agenda_telefonica.visualizar()
+agenda_telefonica.visualizar()'''
