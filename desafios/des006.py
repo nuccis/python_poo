@@ -23,7 +23,7 @@ class Tarefa:
 
 #classes
 class Agenda:
-    def __init__(self, atividades:list) -> None:
+    def __init__(self, atividades:list=[]) -> None:
         self.atividades = atividades
     
     def mostrarTarefas(self):
