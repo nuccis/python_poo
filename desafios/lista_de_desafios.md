@@ -4,3 +4,4 @@
 1. **des004:** Sistema de Gerenciamento de Contatos: Crie um programa que permita ao usuário adicionar, visualizar, atualizar e excluir contatos. Cada contato deve ter um nome, um número de telefone e um endereço de e-mail.
 1. **des005:** Simulação de Banco: Implemente um programa que simule as operações básicas de um banco, como criar conta, depositar, sacar e verificar saldo.
 1. **des006:** Sistema de Gerenciamento de Tarefas: Crie um aplicativo para gerenciar tarefas a fazer. Cada tarefa deve ter uma descrição, uma data de vencimento e um status (pendente, em andamento, concluída).
+1. **des007:** Loja Virtual Simples: Implemente um sistema básico de uma loja online. Permita que os usuários naveguem pelos produtos, adicionem itens ao carrinho e finalizem a compra.
