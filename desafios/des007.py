@@ -1,0 +1,1 @@
+#Loja Virtual Simples: Implemente um sistema básico de uma loja online. Permita que os usuários naveguem pelos produtos, adicionem itens ao carrinho e finalizem a compra.

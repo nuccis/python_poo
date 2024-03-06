@@ -1,5 +1,5 @@
 #Sistema de Gerenciamento de Tarefas: Crie um aplicativo para gerenciar tarefas a fazer. Cada tarefa deve ter uma descrição, uma data de vencimento e um status (pendente, em andamento, concluída).
-from datetime import datetime
+from datetime import datetime, date
 from time import sleep
 
 #Classes
@@ -18,7 +18,11 @@ class Tarefa:
     
     @vencimento.setter
     def vencimento(self, value):
-        self._vencimento = datetime.fromisoformat(value).date()
+        if isinstance(value, date):
+            self._vencimento = value         
+        else:
+            self._vencimento = datetime.fromisoformat(value).date()
+            
 
 
 #classes
@@ -44,24 +48,33 @@ class Agenda:
         print(f'Excluindo a tarefa [{opc}] - {self.atividades[opc - 1].descricao}')
         self.atividades.pop(opc - 1)
         
-    def adicionarTarefa(self):
-        pass
+    def adicionarTarefa(self, descricao, vencimento, status):
+        print(f'Adicionando a tarefa - {descricao}')
+        self.atividades.append(Tarefa(descricao, vencimento, status))
 
 
 #Funções
-def leInteiro(msg) -> int:
+def leInteiro(msg:str, rng:int) -> int:
     while True:
         try:
             opc = int(input(msg))
-            if opc not in range(1, 6):
+            if opc not in range(1, rng):
                 raise ValueError
             break
         except ValueError:
             print('\033[0;31mErro! Digite uma opção válida.\033[m')
     return opc
 
-def leData(msg):
-    pass
+def leData(msg:str):
+    while True:
+        try:
+            data = str(input(msg))
+            data_iso = datetime.fromisoformat(data).date()
+            break
+        except ValueError:
+            print('\033[0;31mErro! Digite o formato de data correto.\033[m')
+    return data_iso
+            
 
 #Programa principal
 tarefa01 = Tarefa('limparcasa','2024-03-06')
@@ -82,26 +95,36 @@ while True:
             '[4] Adicionar tarefa\n'
             '[5] Sair do menu')
     
-    r = leInteiro('Escolha uma opção: ')
+    r = leInteiro('Escolha uma opção: ', 6)
     if r == 1:
         minha_agenda.mostrarTarefas()
     elif r == 2:
         minha_agenda.mostrarTarefas()
         if minha_agenda.atividades:
-            opc = leInteiro('Escolha uma atividade: ')
+            opc = leInteiro('Escolha uma atividade: ', 6)
             print(f'escolha entre os status:\n'
                   f'[1] - {Tarefa.statusPossiveis[0]}\n'
                   f'[2] - {Tarefa.statusPossiveis[1]}\n'
                   f'[3] - {Tarefa.statusPossiveis[2]}')
-            sts = leInteiro('Escolha um status: ')
+            sts = leInteiro('Escolha um status: ', 4)
             minha_agenda.alterarStatus(opc, sts)
     elif r == 3:
         minha_agenda.mostrarTarefas()
         if minha_agenda.atividades:
-            opc = leInteiro('Escolha uma atividade: ')
+            opc = leInteiro('Escolha uma atividade: ', 6)
             minha_agenda.excluirTarefa(opc)
     elif r == 4:
-        pass
+        minha_agenda.mostrarTarefas()
+        desc = str(input('Digite a descrição da tarefa: '))
+        dataVenc = leData('Data de Vencimento (YYYY-MM-DD): ')
+        print(f'escolha entre os status:\n'
+                  f'[1] - {Tarefa.statusPossiveis[0]}\n'
+                  f'[2] - {Tarefa.statusPossiveis[1]}\n'
+                  f'[3] - {Tarefa.statusPossiveis[2]}')
+        opc = leInteiro('Escolha um status: ', 4)
+        sts = Tarefa.statusPossiveis[opc - 1]
+        minha_agenda.adicionarTarefa(desc, dataVenc, sts)
+
     else:
         print('Ok! Até logo')
         break
