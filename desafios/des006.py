@@ -30,15 +30,20 @@ class Agenda:
         print('-^'*30)
         print(f'{'TODAS AS SUAS TAREFAS':^60}')
         print('-^'*30)
-        for i, atv in enumerate(self.atividades):
-            print(f'[{i+1}] {atv.descricao}: {atv.criacao} -> {atv.vencimento} - {atv.status}')
+        if self.atividades:
+            for i, atv in enumerate(self.atividades):
+                print(f'[{i+1}] {atv.descricao}: {atv.criacao} -> {atv.vencimento} - {atv.status}')
+        else:
+            print(f'{'Vazio':^60}')
         
-    def alterarStatus(self):
-        pass
+    def alterarStatus(self, opc, sts):
+        print(f'Alterando o status da tarefa [{opc}] - {self.atividades[opc - 1].descricao}')
+        self.atividades[opc - 1].status = Tarefa.statusPossiveis[sts - 1]
 
-    def excluirTarefa(self):
-        pass
-
+    def excluirTarefa(self, opc):
+        print(f'Excluindo a tarefa [{opc}] - {self.atividades[opc - 1].descricao}')
+        self.atividades.pop(opc - 1)
+        
     def adicionarTarefa(self):
         pass
 
@@ -55,6 +60,8 @@ def leInteiro(msg) -> int:
             print('\033[0;31mErro! Digite uma opção válida.\033[m')
     return opc
 
+def leData(msg):
+    pass
 
 #Programa principal
 tarefa01 = Tarefa('limparcasa','2024-03-06')
@@ -63,6 +70,7 @@ tarefa03 = Tarefa('Caminhar', '2024-05-01', 'Em Andamento')
 tarefa04 = Tarefa('Comprar blusa', '2024-02-01', 'Concluída')
 lista_de_tarefas = [tarefa01, tarefa02, tarefa03, tarefa04]
 minha_agenda = Agenda(lista_de_tarefas)
+
 
 while True:
     print('-*'*30)
@@ -78,9 +86,20 @@ while True:
     if r == 1:
         minha_agenda.mostrarTarefas()
     elif r == 2:
-        pass
+        minha_agenda.mostrarTarefas()
+        if minha_agenda.atividades:
+            opc = leInteiro('Escolha uma atividade: ')
+            print(f'escolha entre os status:\n'
+                  f'[1] - {Tarefa.statusPossiveis[0]}\n'
+                  f'[2] - {Tarefa.statusPossiveis[1]}\n'
+                  f'[3] - {Tarefa.statusPossiveis[2]}')
+            sts = leInteiro('Escolha um status: ')
+            minha_agenda.alterarStatus(opc, sts)
     elif r == 3:
-        pass
+        minha_agenda.mostrarTarefas()
+        if minha_agenda.atividades:
+            opc = leInteiro('Escolha uma atividade: ')
+            minha_agenda.excluirTarefa(opc)
     elif r == 4:
         pass
     else:
