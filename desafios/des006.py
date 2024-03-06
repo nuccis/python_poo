@@ -84,7 +84,6 @@ tarefa04 = Tarefa('Comprar blusa', '2024-02-01', 'Concluída')
 lista_de_tarefas = [tarefa01, tarefa02, tarefa03, tarefa04]
 minha_agenda = Agenda(lista_de_tarefas)
 
-
 while True:
     print('-*'*30)
     print(f'{'GERENCIAMENTO DE TAREFAS':^60}')
