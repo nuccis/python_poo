@@ -12,3 +12,4 @@
 1. teste012: Métodos de classe
 1. teste013: métodos estáticos
 1. teste014: Uso completo de classes
+1. teste015: Herança simples
