@@ -13,3 +13,5 @@
 1. teste013: métodos estáticos
 1. teste014: Uso completo de classes
 1. teste015: Herança simples
+1. teste016: Métodos estendidos
+1. teste017: Métodos sobrescritos

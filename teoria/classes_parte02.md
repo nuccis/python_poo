@@ -21,3 +21,26 @@ Além da herança temos outras relação entre classes, como por exemplo:
 - **Agregação**: expressa uma relação **has-a do tipo fraca**. Por exemplo, uma universidade tem um instrutor. Se a universidade deixar de existir, o instrutor não deixará de existir;
 
 ### Métodos Estendidos vs Métodos Sobrescritos
+Quando um método fornecido pela classe mãe não nos atende ou atende de maneira muito básica, podemos usar dois recursos:
+- **Estender** um método herdado na subclasse, o que significa que você irá reusar a funcionalidade fornecidade pela superclasse e adicionar novas funcionalidades.
+- **Sobrescrever** um método herdado na subclasse, o que significa que você irá descartar completamente a funcionalidade advinda da superclasse e forneça uma nova funcionalidade em uma subclasse.  
+Olhar exemplos de aplicação nos testes 16 e 17.
+
+### Herança múltipla
+Este tipo de herança permite a você criar classes que herdam de vários pais. A subclasse irá ter acesso aos atributos e métodos de todos os seus pais.  
+Esse recurso deve ser usando com muito cuidado, pois podem ocasionar problemas como o "problema do diamante".  
+Quando estamos utilizando múltipla herança, podemos nos deparar com situações onde uma classe herda de duas ou mais classes que tem a mesma classe base. Isto é conhecido como o "problema do diamante". O real problema aparece quando múltiplos pais fornecem versões específicas do mesmo método. Neste caso, seria difícil determinar qual versão do método a subclasse iria utilizar.
+![mro](/teoria/image/mro.png)
+Para resolver este problema Python implementa um algoritmo chamado "method resolution order (MRO)". Este algoritmo diz ao programa como procurar por um método em um contexto de múltipla herança. Em geral, Python procura por métodos e atributos seguindo a seguinte ordem:  
+
+1. The current class;
+1. The leftmost superclasses;
+1. The superclass listed next, from left to right, up to the last superclass;
+1. The superclasses of inherited classes;
+1. The object class;  
+
+No exemplo ilustrativo abaixo, quando chamamos **D().method()**, ele retorna **B.method**.  
+![mro_1](/teoria/image/mro_1.png)
+
+Pode-se também checar o atual MRO de uma dada classe utilizando o atributo especial .\_\_mro__:
+![mro_2](/teoria//image/mro_2.png)
