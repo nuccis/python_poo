@@ -29,8 +29,8 @@ Olhar exemplos de aplicação nos testes 16 e 17.
 ### Herança múltipla
 Este tipo de herança permite a você criar classes que herdam de vários pais. A subclasse irá ter acesso aos atributos e métodos de todos os seus pais.  
 Esse recurso deve ser usando com muito cuidado, pois podem ocasionar problemas como o "problema do diamante".  
-Quando estamos utilizando múltipla herança, podemos nos deparar com situações onde uma classe herda de duas ou mais classes que tem a mesma classe base. Isto é conhecido como o "problema do diamante". O real problema aparece quando múltiplos pais fornecem versões específicas do mesmo método. Neste caso, seria difícil determinar qual versão do método a subclasse iria utilizar.
-![mro](/teoria/image/mro.png)
+Quando estamos utilizando múltipla herança, podemos nos deparar com situações onde uma classe herda de duas ou mais classes que tem a mesma classe base. Isto é conhecido como o "problema do diamante". O real problema aparece quando múltiplos pais fornecem versões específicas do mesmo método. Neste caso, seria difícil determinar qual versão do método a subclasse iria utilizar.  
+![mro](/teoria/image/mro.png)  
 Para resolver este problema Python implementa um algoritmo chamado "method resolution order (MRO)". Este algoritmo diz ao programa como procurar por um método em um contexto de múltipla herança. Em geral, Python procura por métodos e atributos seguindo a seguinte ordem:  
 
 1. The current class;
@@ -43,4 +43,11 @@ No exemplo ilustrativo abaixo, quando chamamos **D().method()**, ele retorna **B
 ![mro_1](/teoria/image/mro_1.png)
 
 Pode-se também checar o atual MRO de uma dada classe utilizando o atributo especial .\_\_mro__:
-![mro_2](/teoria//image/mro_2.png)
+![mro_2](/teoria//image/mro_2.png)  
+
+### Mixin Classes
+Uma classe mixin fornece métodos que você pode reutilizar em várias classes. Classes mixin não definem novos tipos, logo elas não
+se destinam a serem instanciadas.  
+![mixin](/teoria/image/mixin.png)  
+
+### Usando alternativas à Herança
