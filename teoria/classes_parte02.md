@@ -51,3 +51,83 @@ se destinam a serem instanciadas.
 ![mixin](/teoria/image/mixin.png)  
 
 ### Usando alternativas à Herança
+#### 1.1. Herança
+É um tipo de relação **is-a (é-um/uma)**. Por exemplo:
+- O Gato (classe) **é um** Mamífero (classe);
+- O Carro (classe) **é um** Veículo (classe).
+
+Neste tipo de relação uma classe deriva de outra, consequentemente herdando os atributos de sua classe-mãe e todas anteriores à ela (caso exista).  
+Exemplo de código utilizando herança:
+
+    class Animal:
+        def __init__(self, name, sex, habitat):
+            self.name = name
+            self.sex = sex
+            self.habitat = habitat
+
+    class Mammal(Animal):
+        unique_feature = "Mammary glands"
+
+#### 1.2. Composição
+É um tipo forte de relação **has-a (tem-um/uma)**. Por exemplo: 
+
+- Um Funcionário(classe) **tem uma** Identidade (classe);
+- Um Robo (classe) **tem um** Braço (classe).  
+
+Neste tipo de relação, caso o Funcionário ou o Robo deixe de exister, a Identidade e o Braço, respectivamente, deixarão de existir.  
+Exemplo de código utilizando composição:
+
+    class Salary:
+        def __init__(self, monthly_income):
+            self.monthly_income = monthly_income
+    
+        def get_total(self):
+            return (self.monthly_income*12)
+    
+    class Employee:
+        def __init__(self, monthly_income, bonus):
+            self.monthly_income = monthly_income
+            self.bonus = bonus
+            self.obj_salary = Salary(self.monthly_income)
+    
+        def annual_salary(self):
+            return "Total: " + str(self.obj_salary.get_total() + self.bonus) + ' €' 
+
+#### 1.3. Agregação
+É um tipo de relação **has-a (tem-um/uma)**, porém suave. Por exemplo:
+
+- Uma Universidade (classe) **tem um** Instrutor (classe);
+- Um Barbaro (classe) **tem uma** Adaga (classe).
+
+Neste tipo de relação, caso a Universidade ou o Barbaro deixe de existir, o Instrutor e a Adaga, respectivamente, **NÃO** deixarão de existir.  
+Exemplo de código utilizando agregação:
+
+    class Salary: 
+        def __init__(self, pay, bonus): 
+            self.pay = pay 
+            self.bonus = bonus 
+    
+        def annual_salary(self): 
+            return (self.pay*12)+self.bonus 
+
+    class Employee: 
+        def __init__(self, name, age, sal): 
+            self.name = name 
+            self.age = age 
+            self.agg_salary = sal   #Agregação 
+    
+        def total_sal(self): 
+            return self.agg_salary.annual_salary()
+
+    salary = Salary(10000, 1500)
+    emp = Employee('Vi', 25, salary) #a instância emp de Employee recebe o objeto salary como um de seus parâmetros de inicialização
+
+### Criando Abstract Base Classes (ABCs) e interfaces
+Em determinadas situações queremos criar uma hierarquia de classe na qual todas as classes implementem uma interface predefinida ou API (Interface de Programação de Aplicativos), ou seja, queremos definir um conjunto específico de métodos e atributos públicos que todas as classes participantes da hierarquia devem implementar. Em Python nós utilizamos o módulo abc.  
+Uma classe ABC não pode ser instanciada diretamente, ela funciona como um template para a criação das outras classes.  
+**Olhar o teste 018 para exemplo de código.**
+
+### Desbloqueando polimorfismo com interfaces comuns
+Polimorfismo é quando você pode usar objetos de diferentes classes de forma intercambiável porque eles compartilham uma interface comum.
+Como no nosso teste 015, podemos mudar o método .ride() para .drive na classe Motocicleta, e assim ter uma interface comum entre Motocicleta e Carro. Podendo assim utilizar as duas de forma intercambiável, como no exemplo abaixo:  
+![polimorfismo](/teoria/image/polimorfismo.png)
