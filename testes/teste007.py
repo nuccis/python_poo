@@ -26,3 +26,4 @@ print(circulo.__dict__)
 print(circulo.calculate_area())
 circulo.radius = 3
 print(circulo.radius)
+circulo.radius = -1
