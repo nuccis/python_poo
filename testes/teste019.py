@@ -45,3 +45,4 @@ mt_07 = Moto('Yamaha', 'MT-07', 2022, 2)
 
 for vei in [ford_ka, mt_07]:
     vei.drive()
+#alteração
